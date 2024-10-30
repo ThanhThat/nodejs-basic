@@ -13,4 +13,13 @@ const getOneUser = async (userId) => {
   return currentUser[0];
 };
 
-export { getAllUser, getOneUser };
+const createUser = async (infoUser) => {
+  const result = await pool.query(
+    `INSERT INTO user (email, username, address) VALUES (?, ?, ?)`,
+    [infoUser.email, infoUser.username, infoUser.address]
+  );
+
+  console.log(result);
+};
+
+export { getAllUser, getOneUser, createUser };

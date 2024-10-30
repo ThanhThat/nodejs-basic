@@ -1,4 +1,4 @@
-import { getAllUser, getOneUser } from "../services/userCURD";
+import { getAllUser, getOneUser, createUser } from "../services/userCURD";
 
 const homeController = {
   getHomePage: async (req, res) => {
@@ -16,6 +16,20 @@ const homeController = {
     const currentUser = await getOneUser(userId);
 
     return res.render("userDetail.ejs", { currentUser });
+  },
+
+  addNewUser: async (req, res) => {
+    const { email, username, address } = req.body;
+
+    const newUser = {
+      email,
+      username,
+      address,
+    };
+
+    await createUser(newUser);
+
+    return res.redirect("/");
   },
 };
 

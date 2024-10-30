@@ -43,6 +43,26 @@
 
         <% }) %>
       </table>
+
+      <div class="create-user-container">
+        <h2>Create user</h2>
+        <form method="post" action="/user/create">
+          <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" />
+          </div>
+          <div class="input-group">
+            <label for="username">Username</label>
+            <input type="username" id="username" name="username" />
+          </div>
+          <div class="input-group">
+            <label for="address">Address</label>
+            <input type="address" id="address" name="address" />
+          </div>
+
+          <button type="submit" class="btn-create-user">Create user</button>
+        </form>
+      </div>
     </div>
   </body>
 </html>

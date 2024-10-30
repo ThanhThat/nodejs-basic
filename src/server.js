@@ -1,11 +1,14 @@
 import { configDotenv } from "dotenv";
-import express from "express";
+import express, { urlencoded } from "express";
 import configViewEngine from "./config/viewEngine";
 import initRouter from "./route/web";
 
 configDotenv();
 const app = express();
 const port = process.env.PORT || 8080;
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 configViewEngine(app);
 
