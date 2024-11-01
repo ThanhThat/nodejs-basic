@@ -1,4 +1,10 @@
-import { getAllUser, getOneUser, createUser } from "../services/userCURD";
+import {
+  getAllUser,
+  getOneUser,
+  createUser,
+  deleteOneUser,
+  updateOneUser,
+} from "../services/userCURD";
 
 const homeController = {
   getHomePage: async (req, res) => {
@@ -30,6 +36,34 @@ const homeController = {
     await createUser(newUser);
 
     return res.redirect("/");
+  },
+
+  deleteOneUser: async (req, res) => {
+    const userId = req.body.userId;
+    await deleteOneUser(userId);
+    return res.redirect("/");
+  },
+
+  getUpdateUserPage: async (req, res) => {
+    const userId = req.params.userId;
+    const infoUser = await getOneUser(userId);
+    res.render("updateUser.ejs", { infoUser });
+  },
+
+  updateOneUser: async (req, res) => {
+    const userId = req.params.userId;
+    const { email, username, address } = req.body;
+
+    const infoUpdateUser = {
+      id: userId,
+      email,
+      username,
+      address,
+    };
+
+    await updateOneUser(infoUpdateUser);
+
+    res.redirect("/");
   },
 };
 

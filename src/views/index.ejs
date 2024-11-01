@@ -34,9 +34,27 @@
             <td><%=user.username %></td>
             <td><%=user.address %></td>
             <td>
-              <a href="user/detail/<%=user.id %>">Details</a>
-              <a href="user/edit/<%=user.id %>">Edit</a>
-              <a href="user/delete/<%=user.id %>">Delete</a>
+              <a
+                href="user/detail/<%=user.id %>"
+                class="btn-action btn-action--detail"
+                >Details</a
+              >
+              <a
+                href="user/update-user-page/<%=user.id %>"
+                class="btn-action btn-action--edit"
+                >Edit</a
+              >
+              <form action="user/delete" method="post" class="form-action">
+                <input
+                  type="text"
+                  hidden="true"
+                  name="userId"
+                  value="<%=user.id %>"
+                />
+                <button type="submit" class="btn-action btn-action--delete">
+                  Delete
+                </button>
+              </form>
             </td>
           </tr>
         </tbody>

@@ -12,6 +12,10 @@ const initRouter = (app) => {
 
   route.post("/user/create", homeController.addNewUser);
 
+  route.post("/user/delete", homeController.deleteOneUser);
+  route.get("/user/update-user-page/:userId", homeController.getUpdateUserPage);
+  route.post("/user/update-one-user/:userId", homeController.updateOneUser);
+
   return app.use("/", route);
 };
 
