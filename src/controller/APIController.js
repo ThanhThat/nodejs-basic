@@ -1,3 +1,4 @@
+import upload from "../config/upload";
 import {
   createUser,
   deleteOneUser,
@@ -57,6 +58,16 @@ const APIController = {
     } catch (error) {
       return res.status(422).json({ error: error.message });
     }
+  },
+
+  uploadAvatar: (req, res) => {
+    upload.single("avatar")(req, res, (err) => {
+      if (err) return res.send(err.message + " that 1");
+      if (!req.file) {
+        return res.send("No file upload!");
+      }
+      return res.send("success");
+    });
   },
 };
 

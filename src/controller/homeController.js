@@ -65,6 +65,10 @@ const homeController = {
 
     res.redirect("/");
   },
+
+  getPageUploadAvatar: (req, res) => {
+    return res.render("uploadAvatar.ejs");
+  },
 };
 
 export default homeController;
